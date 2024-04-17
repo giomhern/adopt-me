@@ -4,6 +4,14 @@ import fetchPet from "./fetchPet";
 const Details = () => {
   const { id } = useParams();
   const results = useQuery(["details", id], fetchPet); // if it doesnt have details in cache, fetch it
+
+  if(results.isError){
+    return (
+      <div>
+        oh no hehehe
+      </div>
+    )
+  }
   if(results.isLoading){
     return (
       <div className="loading-pane">
